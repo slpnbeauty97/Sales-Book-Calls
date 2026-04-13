@@ -1,58 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <style>
-        /* Existing styles are here... */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f4f6;
+}
 
-        /* Email Opt-In Form Styling */
-        .email-opt-in {
-            margin-top: 20px;
-            padding: 15px;
-            background: #3b82f6;
-            color: white;
-            border-radius: 6px;
-            text-align: center;
-        }
+/* WRAPPER */
+.wrapper {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: white;
+    border: 1px solid #d1d5db;
+}
 
-        .email-opt-in h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
+/* TOP NAV */
+.top-bar {
+    padding: 10px 15px;
+    font-size: 13px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    color: #374151;
+}
 
-        .email-opt-in form {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
+/* HERO DARK SECTION */
+.hero {
+    background: #0f172a;
+    color: white;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 20px;
+}
 
-        .email-opt-in input[type="email"] {
-            padding: 10px;
-            font-size: 14px;
-            border-radius: 4px;
-            border: none;
-            width: 250px;
-        }
+/* LEFT */
+.hero h1 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
 
-        .email-opt-in button {
-            padding: 10px 20px;
-            background: #ffffff;
-            color: #3b82f6;
-            font-weight: bold;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+.hero p {
+    font-size: 14px;
+    color: #cbd5e1;
+    margin-bottom: 15px;
+}
 
-        .email-opt-in button:hover {
-            background: #f3f4f6;
-        }
+/* CTA */
+.cta-btn {
+    display: inline-block;
+    background: #3b82f6;
+    padding: 12px 18px;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-        /* Existing styles are here... */
-    </style>
+/* VIDEO SIDE */
+.video-box {
+    position: relative;
+}
+
+.video-box img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.video-caption {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    font-size: 12px;
+    color: white;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.testimonial img {
+    width: 120px;
+    border-radius: 4px;
+}
+
+.play {
+    position: absolute;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* STATS SECTION */
+.stats {
+    padding: 20px;
+    text-align: center;
+}
+
+.stats h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.stats p {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.stat-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.stat h3 {
+    color: #3b82f6;
+    font-size: 18px;
+}
+
+.stat span {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .hero {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
 <body>
 
@@ -66,6 +164,7 @@
 
     <!-- HERO -->
     <div class="hero">
+
         <!-- LEFT -->
         <div>
             <h1>
@@ -81,17 +180,7 @@
                 Access Now Before It’s Too Late And Do It Risk Free!
             </p>
 
-            <a href="#" class="cta-btn" onclick="openPayment()">Start your 14-Day Free Trial!</a>
-
-            <!-- Email Opt-In Form -->
-            <div class="email-opt-in">
-                <h2>Get Updates and Free Tips!</h2>
-                <p>Sign up for our newsletter and stay up to date with the latest in social media automation.</p>
-                <form id="emailForm">
-                    <input type="email" id="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
+<a href="#" class="cta-btn" onclick="openPayment()">Start your 14-Day Free Trial!</a>
 
             <!-- TESTIMONIAL -->
             <div class="testimonial">
@@ -144,7 +233,6 @@
     </div>
 
 </div>
-
 <!-- PAYMENT MODAL -->
 <div id="paymentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
 
@@ -188,60 +276,45 @@
     </div>
 
 </div>
-
 <script>
-    // Email form handling
-    document.getElementById('emailForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const email = document.getElementById('email').value;
-        
-        if (email) {
-            alert("Thank you for subscribing!");
-            // Here you can add integration with your email provider (Mailchimp, ConvertKit, etc.)
-            // For example, if using Mailchimp API, you would send the email here
-            
-            // Clear the form
-            document.getElementById('email').value = '';
-        }
-    });
+let selectedPlan = "";
+let selectedAmount = 0;
 
-    let selectedPlan = "";
-    let selectedAmount = 0;
+function openPayment() {
+    document.getElementById("paymentModal").style.display = "block";
+}
 
-    function openPayment() {
-        document.getElementById("paymentModal").style.display = "block";
-    }
+function closePayment() {
+    document.getElementById("paymentModal").style.display = "none";
+}
 
-    function closePayment() {
-        document.getElementById("paymentModal").style.display = "none";
-    }
+function selectPlan(plan, amount) {
+    selectedPlan = plan;
+    selectedAmount = amount;
 
-    function selectPlan(plan, amount) {
-        selectedPlan = plan;
-        selectedAmount = amount;
+    closePayment();
 
-        closePayment();
+    // Generate simple reference
+    let ref = "PAY" + Math.floor(Math.random() * 1000000);
 
-        // Generate simple reference
-        let ref = "PAY" + Math.floor(Math.random() * 1000000);
+    document.getElementById("planTitle").innerText = plan + " Plan - KES " + amount;
+    document.getElementById("refCode").innerText = ref;
 
-        document.getElementById("planTitle").innerText = plan + " Plan - KES " + amount;
-        document.getElementById("refCode").innerText = ref;
+    document.getElementById("instructionsModal").style.display = "block";
+}
 
-        document.getElementById("instructionsModal").style.display = "block";
-    }
+function closeInstructions() {
+    document.getElementById("instructionsModal").style.display = "none";
+}
 
-    function closeInstructions() {
-        document.getElementById("instructionsModal").style.display = "none";
-    }
+function confirmPayment() {
+    alert("Thank you! Your " + selectedPlan + " subscription is being activated.");
 
-    function confirmPayment() {
-        alert("Thank you! Your " + selectedPlan + " subscription is being activated.");
-        // Save fake subscription locally
-        localStorage.setItem("subscription", selectedPlan);
-        closeInstructions();
-    }
+    // Save fake subscription locally
+    localStorage.setItem("subscription", selectedPlan);
+
+    closeInstructions();
+}
 </script>
-
 </body>
+</html>
