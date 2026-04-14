@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book</title>
+<title>Funnels</title>
+
 <style>
 * {
     margin: 0;
@@ -150,8 +151,89 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* MODAL CONTAINER */
+#leadModal div {
+    animation: fadeIn 0.25s ease;
+}
+
+/* FORM */
+.lead-form {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* TWO COLUMN ROW */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* INPUTS */
+.lead-form input {
+    padding: 12px 14px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.lead-form input:focus {
+    border-color: #3b82f6;
+    background: white;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+}
+
+/* BUTTON */
+.lead-form button {
+    padding: 13px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.lead-form button:hover {
+    background: #2563eb;
+}
+
+/* CHECKBOX */
+.checkbox {
+    font-size: 12px;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox input {
+    accent-color: #3b82f6;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
 </style>
 </head>
+
 <body>
 
 <div class="wrapper">
@@ -159,7 +241,7 @@ body {
     <!-- TOP -->
     <div class="top-bar">
         <div><strong>Join My Community</strong></div>
-        <div><a href="https://open.substack.com/pub/slpnbeauty/p/creator-systems?r=1z5p97&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true">4 min read</a></div>
+        <div>4 min read</div>
     </div>
 
     <!-- HERO -->
@@ -173,19 +255,18 @@ body {
             </h1>
 
             <p>
-               Automated Creative System That Convert Your Visitors Into Leads And Then Customers with tools as simple as Excel and Photoshop...
+               Automated Creative System That Convert Your Visitors Into Leads And Then Customers...
             </p>
 
             <p style="font-size:13px;">
                 Access Now Before It’s Too Late And Do It Risk Free!
             </p>
 
-<a href="#" class="cta-btn" onclick="openPayment()">Start your 14-Day Free Trial!</a>
-
+<a href="#" class="cta-btn" onclick="openLeadForm()">Start your 14-Day Free Trial!</a>
             <!-- TESTIMONIAL -->
             <div class="testimonial">
                 <div style="position:relative;">
-                    <img src="Hero101.jpeg">
+                    <img src="Heropicme.jpeg">
                     <div class="play">▶</div>
                 </div>
                 <div style="font-size:12px;">
@@ -198,7 +279,7 @@ body {
         <div class="video-box">
             <img src="Hero101.jpeg">
             <div class="video-caption">
-                From having the life they've always wanted...
+                Turning your Content to a Money Machine...
             </div>
         </div>
 
@@ -206,10 +287,10 @@ body {
 
     <!-- STATS -->
     <div class="stats">
-        <h2>Changing The Lives Of Creative Entrepreneurs</h2>
+        <h2>Changing The Lives Of Entrepreneurs</h2>
 
         <p>
-            Join the 113,937 entrepreneurs who are actively using the Creator OS to grow their businesses and their income everyday!
+            Join the 113,937 entrepreneurs who are actively using ClickFunnels to grow their businesses and their income everyday!
         </p>
 
         <div class="stat-grid">
@@ -233,88 +314,67 @@ body {
     </div>
 
 </div>
-<!-- PAYMENT MODAL -->
-<div id="paymentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
+<div id="leadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
 
-    <div style="background:white; max-width:400px; margin:100px auto; padding:20px; border-radius:6px; text-align:center;">
+    <div style="background:white; max-width:420px; margin:80px auto; padding:20px; border-radius:6px;">
         
-        <h2>Book your Consultation Call</h2>
+        <h2>Start Your Free Trial</h2>
 
-        <p><strong>30 mins -KES 500 </strong></p>
-        <button onclick="selectPlan('Basic', 500)">Choose</button>
+        <form onsubmit="submitLead(event)" class="lead-form">
 
-        <p><strong>1 hr - KES 1000</strong></p>
-        <button onclick="selectPlan('Pro', 1000)">Choose</button>
+            <div class="form-row">
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+            </div>
 
-        <p><strong>VIP - KES 2000/month</strong></p>
-        <button onclick="selectPlan('VIP', 2000)">Choose</button>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number" required>
 
-        <br><br>
-        <button onclick="closePayment()">Cancel</button>
+            <label class="checkbox" style="color:#333;">
+                <input type="checkbox" required>
+                <span>I agree to the terms & conditions</span>
+            </label>
+
+            <button type="submit">Continue</button>
+
+        </form>
+
+        <br>
+        <button onclick="closeLeadForm()">Cancel</button>
+
     </div>
-
 </div>
 
-<!-- INSTRUCTIONS MODAL -->
-<div id="instructionsModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
-
-    <div style="background:white; max-width:400px; margin:100px auto; padding:20px; border-radius:6px;">
-        
-        <h3 id="planTitle"></h3>
-
-        <p>Pay via M-Pesa:</p>
-        <ol style="text-align:left;">
-            <li>Go to M-Pesa</li>
-            <li>Select "Send Money"</li>
-            <li>Enter Number: <strong>07XXXXXXXX</strong></li>
-            <li>Enter Amount</li>
-            <li>Use Reference: <strong id="refCode"></strong></li>
-        </ol>
-
-        <button onclick="confirmPayment()">I Have Paid</button>
-        <button onclick="closeInstructions()">Cancel</button>
-    </div>
-
-</div>
 <script>
-let selectedPlan = "";
-let selectedAmount = 0;
 
-function openPayment() {
-    document.getElementById("paymentModal").style.display = "block";
+function openLeadForm() {
+    document.getElementById("leadModal").style.display = "block";
 }
 
-function closePayment() {
-    document.getElementById("paymentModal").style.display = "none";
+function closeLeadForm() {
+    document.getElementById("leadModal").style.display = "none";
 }
 
-function selectPlan(plan, amount) {
-    selectedPlan = plan;
-    selectedAmount = amount;
+function submitLead(e) {
+    e.preventDefault();
 
-    closePayment();
+    // OPTIONAL: collect values
+    const inputs = e.target.querySelectorAll("input");
+    let leadData = {};
 
-    // Generate simple reference
-    let ref = "PAY" + Math.floor(Math.random() * 1000000);
+    inputs.forEach(input => {
+        if (input.type !== "checkbox") {
+            leadData[input.placeholder] = input.value;
+        }
+    });
 
-    document.getElementById("planTitle").innerText = plan + " Plan - KES " + amount;
-    document.getElementById("refCode").innerText = ref;
+    // Save locally (you can replace with backend later)
+    localStorage.setItem("lead", JSON.stringify(leadData));
 
-    document.getElementById("instructionsModal").style.display = "block";
-}
+    // Close lead form
+    closeLeadForm();
 
-function closeInstructions() {
-    document.getElementById("instructionsModal").style.display = "none";
-}
-
-function confirmPayment() {
-    alert("Thank you! Your " + selectedPlan + " subscription is being activated.");
-
-    // Save fake subscription locally
-    localStorage.setItem("subscription", selectedPlan);
-
-    closeInstructions();
-}
+  }
 </script>
 </body>
 </html>
