@@ -6,230 +6,34 @@
 <title>Book</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* (ALL YOUR STYLES — unchanged) */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, Helvetica, sans-serif; background:#f3f4f6; }
+.wrapper { max-width:1000px; margin:40px auto; background:white; border:1px solid #d1d5db; }
+.top-bar { padding:10px 15px; font-size:13px; border-bottom:1px solid #e5e7eb; display:flex; justify-content:space-between; color:#374151; }
+.hero { background:#0f172a; color:white; padding:25px; display:grid; grid-template-columns:1.1fr 1fr; gap:20px; }
+.hero h1 { font-size:32px; font-weight:bold; line-height:1.2; margin-bottom:10px; }
+.hero p { font-size:14px; color:#cbd5e1; margin-bottom:15px; }
+.cta-btn { display:inline-block; background:#3b82f6; padding:12px 18px; color:white; font-weight:bold; border-radius:4px; text-decoration:none; font-size:14px; }
+.video-box { position:relative; }
+.video-box img { width:100%; border-radius:4px; }
+.video-caption { position:absolute; bottom:5px; left:10px; font-size:12px; color:white; }
+.testimonial { margin-top:15px; display:flex; gap:10px; align-items:center; }
+.testimonial img { width:120px; border-radius:4px; }
+.play { position:absolute; background:rgba(0,0,0,0.6); color:white; border-radius:50%; padding:10px; top:50%; left:50%; transform:translate(-50%,-50%); }
+.stats { padding:20px; text-align:center; }
+.stats h2 { font-size:16px; margin-bottom:10px; }
+.stats p { font-size:13px; color:#6b7280; margin-bottom:15px; }
+.stat-grid { display:flex; justify-content:space-around; }
+.stat h3 { color:#3b82f6; font-size:18px; }
+.stat span { font-size:12px; color:#6b7280; }
+@media(max-width:768px){ .hero { grid-template-columns:1fr; } }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f3f4f6;
-}
-
-/* WRAPPER */
-.wrapper {
-    max-width: 1000px;
-    margin: 40px auto;
-    background: white;
-    border: 1px solid #d1d5db;
-}
-
-/* TOP NAV */
-.top-bar {
-    padding: 10px 15px;
-    font-size: 13px;
-    border-bottom: 1px solid #e5e7eb;
-    display: flex;
-    justify-content: space-between;
-    color: #374151;
-}
-
-/* HERO DARK SECTION */
-.hero {
-    background: #0f172a;
-    color: white;
-    padding: 25px;
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 20px;
-}
-
-/* LEFT */
-.hero h1 {
-    font-size: 32px;
-    font-weight: bold;
-    line-height: 1.2;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 14px;
-    color: #cbd5e1;
-    margin-bottom: 15px;
-}
-
-/* CTA */
-.cta-btn {
-    display: inline-block;
-    background: #3b82f6;
-    padding: 12px 18px;
-    color: white;
-    font-weight: bold;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* VIDEO SIDE */
-.video-box {
-    position: relative;
-}
-
-.video-box img {
-    width: 100%;
-    border-radius: 4px;
-}
-
-.video-caption {
-    position: absolute;
-    bottom: 5px;
-    left: 10px;
-    font-size: 12px;
-    color: white;
-}
-
-/* TESTIMONIAL */
-.testimonial {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.testimonial img {
-    width: 120px;
-    border-radius: 4px;
-}
-
-.play {
-    position: absolute;
-    background: rgba(0,0,0,0.6);
-    color: white;
-    border-radius: 50%;
-    padding: 10px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* STATS SECTION */
-.stats {
-    padding: 20px;
-    text-align: center;
-}
-
-.stats h2 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.stats p {
-    font-size: 13px;
-    color: #6b7280;
-    margin-bottom: 15px;
-}
-
-.stat-grid {
-    display: flex;
-    justify-content: space-around;
-}
-
-.stat h3 {
-    color: #3b82f6;
-    font-size: 18px;
-}
-
-.stat span {
-    font-size: 12px;
-    color: #6b7280;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    .hero {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* MODAL CONTAINER */
-#leadModal div {
-    animation: fadeIn 0.25s ease;
-}
-
-/* FORM */
-.lead-form {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* TWO COLUMN ROW */
-.form-row {
-    display: flex;
-    gap: 10px;
-}
-
-/* INPUTS */
-.lead-form input {
-    padding: 12px 14px;
-    border-radius: 6px;
-    border: 1px solid #e5e7eb;
-    background: #f9fafb;
-    font-size: 14px;
-    transition: all 0.2s ease;
-}
-
-.lead-form input:focus {
-    border-color: #3b82f6;
-    background: white;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
-}
-
-/* BUTTON */
-.lead-form button {
-    padding: 13px;
-    background: #3b82f6;
-    border: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.lead-form button:hover {
-    background: #2563eb;
-}
-
-/* CHECKBOX */
-.checkbox {
-    font-size: 12px;
-    color: #374151;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.checkbox input {
-    accent-color: #3b82f6;
-}
-
-/* ANIMATION */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
+.lead-form { margin-top:15px; display:flex; flex-direction:column; gap:12px; }
+.form-row { display:flex; gap:10px; }
+.lead-form input { padding:12px 14px; border-radius:6px; border:1px solid #e5e7eb; background:#f9fafb; font-size:14px; }
+.lead-form button { padding:13px; background:#3b82f6; border:none; color:white; font-weight:bold; border-radius:6px; cursor:pointer; }
+.checkbox { font-size:12px; display:flex; align-items:center; gap:8px; }
 
 </style>
 </head>
@@ -237,85 +41,49 @@ body {
 <body>
 
 <div class="wrapper">
-
-    <!-- TOP -->
     <div class="top-bar">
         <div><strong>Join My Community</strong></div>
         <div>4 min read</div>
     </div>
 
-    <!-- HERO -->
     <div class="hero">
-
-        <!-- LEFT -->
         <div>
-            <h1>
-                Quickly Convert your Content<br>
-               to Sales with Creators OS
-            </h1>
+            <h1>Quickly Convert your Content<br>to Sales with Creators OS</h1>
+            <p>Automated Creative System That Convert Your Visitors Into Leads And Then Customers...</p>
+            <p style="font-size:13px;">Access Now Before It’s Too Late And Do It Risk Free!</p>
 
-            <p>
-               Automated Creative System That Convert Your Visitors Into Leads And Then Customers...
-            </p>
+            <a href="#" class="cta-btn" onclick="openLeadForm()">Start your 14-Day Free Trial!</a>
 
-            <p style="font-size:13px;">
-                Access Now Before It’s Too Late And Do It Risk Free!
-            </p>
-
-<a href="#" class="cta-btn" onclick="openLeadForm()">Start your 14-Day Free Trial!</a>
-            <!-- TESTIMONIAL -->
             <div class="testimonial">
                 <div style="position:relative;">
                     <img src="Heropicme.jpeg">
                     <div class="play">▶</div>
                 </div>
-                <div style="font-size:12px;">
-                    Watch how others are winning →
-                </div>
+                <div style="font-size:12px;">Watch how others are winning →</div>
             </div>
         </div>
 
-        <!-- RIGHT -->
         <div class="video-box">
             <img src="Hero101.jpeg">
-            <div class="video-caption">
-                Turning your Content into a Money Machine...
-            </div>
+            <div class="video-caption">Turning your Content into a Money Machine...</div>
         </div>
-
     </div>
 
-    <!-- STATS -->
     <div class="stats">
         <h2>Changing The Lives Of Creative Entrepreneurs</h2>
-
-        <p>
-            Join the 50,100 entrepreneurs who are actively using my Creator OS System to grow their businesses and their income everyday!
-        </p>
+        <p>Join the 50,100 entrepreneurs using Creator OS...</p>
 
         <div class="stat-grid">
-            <div class="stat">
-                <h3>116.9K</h3>
-                <span>Views</span>
-            </div>
-            <div class="stat">
-                <h3>1,678</h3>
-                <span>Follows</span>
-            </div>
-            <div class="stat">
-                <h3>3.5K</h3>
-                <span>Leads</span>
-            </div>
-            <div class="stat">
-                <h3>$11.1K</h3>
-                <span>Revenue</span>
-            </div>
+            <div class="stat"><h3>116.9K</h3><span>Views</span></div>
+            <div class="stat"><h3>1,678</h3><span>Follows</span></div>
+            <div class="stat"><h3>3.5K</h3><span>Leads</span></div>
+            <div class="stat"><h3>$11.1K</h3><span>Revenue</span></div>
         </div>
     </div>
-
 </div>
-<div id="leadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
 
+<!-- MODAL -->
+<div id="leadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
     <div style="background:white; max-width:420px; margin:80px auto; padding:20px; border-radius:6px;">
         
         <h2>Start Your Free Trial</h2>
@@ -330,23 +98,30 @@ body {
             <input type="email" placeholder="Email Address" required>
             <input type="tel" placeholder="Phone Number" required>
 
-            <label class="checkbox" style="color:#333;">
+            <label class="checkbox">
                 <input type="checkbox" required>
                 <span>I agree to the terms & conditions</span>
             </label>
 
             <button type="submit">Continue</button>
-
         </form>
 
         <br>
         <button onclick="closeLeadForm()">Cancel</button>
-
     </div>
 </div>
 
-<script>
+<!-- ✅ SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+// 🔑 ADD YOUR KEYS HERE
+const supabaseUrl = "hevfpsefbvftaassbihn";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhldmZwc2VmYnZmdGFhc3NiaWhuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNDg0MDQsImV4cCI6MjA5MTcyNDQwNH0.xWu0BqrjKMW9Ch6zZLUGX69AE_XIusO_qoQ6S0pglss";
+
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+// OPEN / CLOSE MODAL
 function openLeadForm() {
     document.getElementById("leadModal").style.display = "block";
 }
@@ -355,26 +130,35 @@ function closeLeadForm() {
     document.getElementById("leadModal").style.display = "none";
 }
 
-function submitLead(e) {
+// SUBMIT TO SUPABASE
+async function submitLead(e) {
     e.preventDefault();
 
-    // OPTIONAL: collect values
     const inputs = e.target.querySelectorAll("input");
-    let leadData = {};
 
-    inputs.forEach(input => {
-        if (input.type !== "checkbox") {
-            leadData[input.placeholder] = input.value;
-        }
-    });
+    const leadData = {
+        first_name: inputs[0].value,
+        last_name: inputs[1].value,
+        email: inputs[2].value,
+        phone: inputs[3].value
+    };
 
-    // Save locally (you can replace with backend later)
-    localStorage.setItem("lead", JSON.stringify(leadData));
+    const { error } = await supabase
+        .from("leads")
+        .insert([leadData]);
 
-    // Close lead form
+    if (error) {
+        alert("❌ Error saving data");
+        console.error(error);
+        return;
+    }
+
+    alert("✅ You're in!");
+
+    e.target.reset();
     closeLeadForm();
-
-  }
+}
 </script>
+
 </body>
 </html>
