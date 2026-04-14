@@ -6,86 +6,41 @@
 <title>Book</title>
 
 <style>
+/* (ALL YOUR STYLES — unchanged) */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: Arial, Helvetica, sans-serif; background:#f3f4f6; }
-
-.wrapper {
-    max-width:1000px;
-    margin:40px auto;
-    background:white;
-    border:1px solid #d1d5db;
-}
-
-.top-bar {
-    padding:10px 15px;
-    font-size:13px;
-    border-bottom:1px solid #e5e7eb;
-    display:flex;
-    justify-content:space-between;
-}
-
-.hero {
-    background:#0f172a;
-    color:white;
-    padding:25px;
-    display:grid;
-    grid-template-columns:1.1fr 1fr;
-    gap:20px;
-}
-
-.hero h1 { font-size:32px; margin-bottom:10px; }
+.wrapper { max-width:1000px; margin:40px auto; background:white; border:1px solid #d1d5db; }
+.top-bar { padding:10px 15px; font-size:13px; border-bottom:1px solid #e5e7eb; display:flex; justify-content:space-between; color:#374151; }
+.hero { background:#0f172a; color:white; padding:25px; display:grid; grid-template-columns:1.1fr 1fr; gap:20px; }
+.hero h1 { font-size:32px; font-weight:bold; line-height:1.2; margin-bottom:10px; }
 .hero p { font-size:14px; color:#cbd5e1; margin-bottom:15px; }
-
-.cta-btn {
-    background:#3b82f6;
-    padding:12px 18px;
-    color:white;
-    border:none;
-    font-weight:bold;
-    border-radius:4px;
-    cursor:pointer;
-}
-
+.cta-btn { display:inline-block; background:#3b82f6; padding:12px 18px; color:white; font-weight:bold; border-radius:4px; text-decoration:none; font-size:14px; }
+.video-box { position:relative; }
 .video-box img { width:100%; border-radius:4px; }
-
+.video-caption { position:absolute; bottom:5px; left:10px; font-size:12px; color:white; }
+.testimonial { margin-top:15px; display:flex; gap:10px; align-items:center; }
+.testimonial img { width:120px; border-radius:4px; }
+.play { position:absolute; background:rgba(0,0,0,0.6); color:white; border-radius:50%; padding:10px; top:50%; left:50%; transform:translate(-50%,-50%); }
 .stats { padding:20px; text-align:center; }
+.stats h2 { font-size:16px; margin-bottom:10px; }
+.stats p { font-size:13px; color:#6b7280; margin-bottom:15px; }
 .stat-grid { display:flex; justify-content:space-around; }
+.stat h3 { color:#3b82f6; font-size:18px; }
+.stat span { font-size:12px; color:#6b7280; }
+@media(max-width:768px){ .hero { grid-template-columns:1fr; } }
 
-.lead-form {
-    margin-top:15px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
+.lead-form { margin-top:15px; display:flex; flex-direction:column; gap:12px; }
 .form-row { display:flex; gap:10px; }
+.lead-form input { padding:12px 14px; border-radius:6px; border:1px solid #e5e7eb; background:#f9fafb; font-size:14px; }
+.lead-form button { padding:13px; background:#3b82f6; border:none; color:white; font-weight:bold; border-radius:6px; cursor:pointer; }
+.checkbox { font-size:12px; display:flex; align-items:center; gap:8px; }
 
-.lead-form input {
-    padding:12px;
-    border-radius:6px;
-    border:1px solid #ddd;
-}
-
-.lead-form button {
-    padding:13px;
-    background:#3b82f6;
-    border:none;
-    color:white;
-    border-radius:6px;
-}
-
-.checkbox {
-    font-size:12px;
-    display:flex;
-    gap:8px;
-}
 </style>
 </head>
 
 <body>
 
 <div class="wrapper">
-
     <div class="top-bar">
         <div><strong>Join My Community</strong></div>
         <div>4 min read</div>
@@ -93,51 +48,64 @@ body { font-family: Arial, Helvetica, sans-serif; background:#f3f4f6; }
 
     <div class="hero">
         <div>
-            <h1>Quickly Convert your Content<br>to Sales</h1>
-
-            <p>Turn visitors into leads and customers.</p>
-
-            <!-- ✅ FIXED BUTTON -->
-            <button class="cta-btn" id="openBtn">
-                Start your 14-Day Free Trial!
-            </button>
+            <h1>Quickly Convert your Content<br>to Sales with Creators OS</h1>
+            <p>Automated Creative System That Convert Your Visitors Into Leads And Then Customers...</p>
+            <p style="font-size:13px;">Access Now Before It’s Too Late And Do It Risk Free!</p>
+<a href="#" class="cta-btn" onclick="openLeadForm(); return false;">Start your 14-Day Free Trial!</a>
+            <div class="testimonial">
+                <div style="position:relative;">
+                    <img src="Heropicme.jpeg">
+                    <div class="play">▶</div>
+                </div>
+                <div style="font-size:12px;">Watch how others are winning →</div>
+            </div>
         </div>
 
         <div class="video-box">
             <img src="Hero101.jpeg">
+            <div class="video-caption">Turning your Content into a Money Machine...</div>
         </div>
     </div>
 
+    <div class="stats">
+        <h2>Changing The Lives Of Creative Entrepreneurs</h2>
+        <p>Join the 50,100 entrepreneurs using Creator OS...</p>
+
+        <div class="stat-grid">
+            <div class="stat"><h3>116.9K</h3><span>Views</span></div>
+            <div class="stat"><h3>1,678</h3><span>Follows</span></div>
+            <div class="stat"><h3>3.5K</h3><span>Leads</span></div>
+            <div class="stat"><h3>$11.1K</h3><span>Revenue</span></div>
+        </div>
+    </div>
 </div>
 
 <!-- MODAL -->
 <div id="leadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
-
     <div style="background:white; max-width:420px; margin:80px auto; padding:20px; border-radius:6px;">
         
         <h2>Start Your Free Trial</h2>
 
-        <form id="leadForm" class="lead-form">
+        <form onsubmit="submitLead(event)" class="lead-form">
 
             <div class="form-row">
-                <input type="text" id="firstName" placeholder="First Name" required>
-                <input type="text" id="lastName" placeholder="Last Name" required>
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
             </div>
 
-            <input type="email" id="email" placeholder="Email Address" required>
-            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number" required>
 
             <label class="checkbox">
                 <input type="checkbox" required>
-                <span>I agree to terms</span>
+                <span>I agree to the terms & conditions</span>
             </label>
 
             <button type="submit">Continue</button>
         </form>
 
         <br>
-        <button id="closeBtn">Cancel</button>
-
+        <button onclick="closeLeadForm()">Cancel</button>
     </div>
 </div>
 
@@ -145,37 +113,32 @@ body { font-family: Arial, Helvetica, sans-serif; background:#f3f4f6; }
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-// 🔑 YOUR KEYS
+// 🔑 ADD YOUR KEYS HERE
 const supabaseUrl = "https://hevfpsefbvftaassbihn.supabase.co";
-const supabaseKey = "YOUR_ANON_KEY_HERE";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhldmZwc2VmYnZmdGFhc3NiaWhuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNDg0MDQsImV4cCI6MjA5MTcyNDQwNH0.xWu0BqrjKMW9Ch6zZLUGX69AE_XIusO_qoQ6S0pglss";
 
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-// ELEMENTS
-const modal = document.getElementById("leadModal");
-const openBtn = document.getElementById("openBtn");
-const closeBtn = document.getElementById("closeBtn");
-const form = document.getElementById("leadForm");
+// OPEN / CLOSE MODAL
+function openLeadForm() {
+    document.getElementById("leadModal").style.display = "block";
+}
 
-// OPEN MODAL
-openBtn.addEventListener("click", () => {
-    modal.style.display = "block";
-});
+function closeLeadForm() {
+    document.getElementById("leadModal").style.display = "none";
+}
 
-// CLOSE MODAL
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-
-// SUBMIT FORM
-form.addEventListener("submit", async (e) => {
+// SUBMIT TO SUPABASE
+async function submitLead(e) {
     e.preventDefault();
 
+    const inputs = e.target.querySelectorAll("input");
+
     const leadData = {
-        first_name: document.getElementById("firstName").value,
-        last_name: document.getElementById("lastName").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value
+        first_name: inputs[0].value,
+        last_name: inputs[1].value,
+        email: inputs[2].value,
+        phone: inputs[3].value
     };
 
     const { error } = await supabase
@@ -183,16 +146,16 @@ form.addEventListener("submit", async (e) => {
         .insert([leadData]);
 
     if (error) {
+        alert("❌ Error saving data");
         console.error(error);
-        alert("❌ Failed to save");
         return;
     }
 
     alert("✅ You're in!");
 
-    form.reset();
-    modal.style.display = "none";
-});
+    e.target.reset();
+    closeLeadForm();
+}
 </script>
 
 </body>
