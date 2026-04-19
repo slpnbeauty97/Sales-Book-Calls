@@ -113,49 +113,47 @@ body { font-family: Arial, Helvetica, sans-serif; background:#f3f4f6; }
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-// 🔑 ADD YOUR KEYS HERE
-const supabaseUrl = "https://hevfpsefbvftaassbihn.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhldmZwc2VmYnZmdGFhc3NiaWhuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNDg0MDQsImV4cCI6MjA5MTcyNDQwNH0.xWu0BqrjKMW9Ch6zZLUGX69AE_XIusO_qoQ6S0pglss";
+// WAIT until page loads
+document.addEventListener("DOMContentLoaded", () => {
 
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    const modal = document.getElementById("leadModal");
+    const openBtn = document.querySelector(".cta-btn");
+    const closeBtn = document.querySelector("#leadModal button:last-of-type");
+    const form = document.querySelector(".lead-form");
 
-// OPEN / CLOSE MODAL
-function openLeadForm() {
-    document.getElementById("leadModal").style.display = "block";
-}
+    // OPEN MODAL
+    openBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        modal.style.display = "block";
+    });
 
-function closeLeadForm() {
-    document.getElementById("leadModal").style.display = "none";
-}
+    // CLOSE MODAL
+    closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
 
-// SUBMIT TO SUPABASE
-async function submitLead(e) {
-    e.preventDefault();
+    // SUBMIT FORM (TEMP)
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    const inputs = e.target.querySelectorAll("input");
+        const inputs = form.querySelectorAll("input");
 
-    const leadData = {
-        first_name: inputs[0].value,
-        last_name: inputs[1].value,
-        email: inputs[2].value,
-        phone: inputs[3].value
-    };
+        const leadData = {
+            first_name: inputs[0].value,
+            last_name: inputs[1].value,
+            email: inputs[2].value,
+            phone: inputs[3].value
+        };
 
-    const { error } = await supabase
-        .from("leads")
-        .insert([leadData]);
+        console.log("Captured Lead:", leadData);
 
-    if (error) {
-        alert("❌ Error saving data");
-        console.error(error);
-        return;
-    }
+        alert("✅ Form works! Now connect backend.");
 
-    alert("✅ You're in!");
+        form.reset();
+        modal.style.display = "none";
+    });
 
-    e.target.reset();
-    closeLeadForm();
-}
+});
 </script>
 
 </body>
