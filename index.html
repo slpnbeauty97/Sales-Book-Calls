@@ -136,36 +136,44 @@ document.addEventListener("DOMContentLoaded", () => {
     closeBtn.addEventListener("click", () => {
         modal.style.display = "none";
     });
-//FORM HANDLER SUPABASE
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
 
-    const inputs = form.querySelectorAll("input");
+    // FORM HANDLER SUPABASE
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-    const leadData = {
-        first_name: inputs[0].value,
-        last_name: inputs[1].value,
-        email: inputs[2].value,
-        phone: inputs[3].value
-    };
+        const inputs = form.querySelectorAll("input");
 
-    console.log("Sending →", leadData);
+        const leadData = {
+            first_name: inputs[0].value,
+            last_name: inputs[1].value,
+            email: inputs[2].value,
+            phone: inputs[3].value
+        };
 
-    const { error } = await supabase
-        .from("leads")
-        .insert([leadData]);
+        // Debugging: Check if the form data is captured correctly
+        console.log("Sending →", leadData);
 
-    if (error) {
-        console.error(error);
-        alert("❌ Failed to save");
-        return;
-    }
+        // Insert data into Supabase
+        try {
+            const { error } = await supabaseClient
+                .from("leads")
+                .insert([leadData]);
 
-    alert("✅ Saved to database!");
+            if (error) {
+                console.error(error);
+                alert("❌ Failed to save");
+                return;
+            }
 
-    form.reset();
-    modal.style.display = "none";
-});
+            alert("✅ Saved to database!");
+        } catch (err) {
+            console.error(err);
+            alert("❌ An unexpected error occurred");
+        }
+
+        form.reset();
+        modal.style.display = "none";
+    });
 
 });
 </script>
