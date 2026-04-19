@@ -122,8 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 🔑 YOUR SUPABASE CONFIG
     const supabaseUrl = "https://hevfpsefbvftaassbihn.supabase.co";
-    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhldmZwc2VmYnZmdGFhc3NiaWhuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNDg0MDQsImV4cCI6MjA5MTcyNDQwNH0.xWu0BqrjKMW9Ch6zZLUGX69AE_XIusO_qoQ6S0pglss"; // ⚠️ replace this
-
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhldmZwc2VmYnZmdGFhc3NiaWhuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNDg0MDQsImV4cCI6MjA5MTcyNDQwNH0.xWu0BqrjKMW9Ch6zZLUGX69AE_XIusO_qoQ6S0pglss"; // Replace with your real anon key
     const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
     // OPEN MODAL
@@ -150,8 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
             phone: inputs[3].value
         };
 
-        // Debugging: Check if the form data is captured correctly
-        console.log("Sending →", leadData);
+        console.log("Sending to Supabase →", leadData); // Debugging: Ensure correct data
 
         // Insert data into Supabase
         try {
@@ -177,6 +175,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
-
 </body>
 </html>
